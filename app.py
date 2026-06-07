@@ -179,7 +179,7 @@ def get_input_features():
         1 if feeding_route == "Nasogastric" else 2 if feeding_route == "Nasojejunal" else 3,
         float(en_start_time),
         float(iap),
-        int(agi_grade.split()[-1]) if "Grade" in agi_grade else int(agi_grade),
+        {'I': 1, 'II': 2, 'III': 3, 'IV': 4}.get(agi_grade.split()[-1], 0) if "Grade" in agi_grade else int(agi_grade),
         1 if sedation_depth == "Mild" else 2 if sedation_depth == "Moderate" else 3,
         1 if vasoactive == "Yes" else 0,
         1 if diabetes == "Yes" else 0
